@@ -17,13 +17,20 @@ class LikeDB:
     def save(self):
         with open(self.db_path, 'w') as f:
             json.dump(self.db, f, indent=4)
-    
+    """def add_user(self,user_id):
+        self.db[user_id]={"like":0,"dizlike":1}
+        self.save()"""
     def all_likes(self):
         """Counts all users likes
         returns
             all users likes
         """
         pass
+        """for all_likes (like):
+            like+=1"""
+            
+            
+
         
     def all_dislikes(self):
         """Counts all users dislikes
@@ -42,7 +49,9 @@ class LikeDB:
         returns:
             The number of likes and dislikes for the post
         '''
-        pass
+        self.db[user_id]={"like":1}
+        
+        self.save("user_id")
 
   
     #Add a dislike to the database
@@ -55,3 +64,8 @@ class LikeDB:
             The number of likes and dislikes for the post
         '''
         pass
+        self.db[user_id]={"dizlike":1}
+        self.save()
+
+db = LikeDB("db.json")
+print(db.add_like("user_id"))   
